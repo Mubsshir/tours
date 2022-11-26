@@ -7,14 +7,19 @@ const App = () => {
   const [tours, setTours] = useState([]);
   const [loading, SetIsLoading] = useState(null);
   const fetchTours = async () => {
-    SetIsLoading(true);
-    const res = await fetch(url);
-    if (!res.ok) {
-      // do something
+    try {
+      SetIsLoading(true);
+      const res = await fetch(url);
+      if (!res.ok) {
+        // do something
+        throw new Error("Somthing went wrong");
+      }
+      const data = await res.json();
+      setTours(data);
+      SetIsLoading(false);
+    } catch (ex) {
+      console.log(ex.message);
     }
-    const data = await res.json();
-    setTours(data);
-    SetIsLoading(false);
   }
   const RemoveTour = (id) => {
     const newTours = tours.filter(tour => tour.id !== id);
@@ -45,7 +50,7 @@ const App = () => {
   return (
     <div className='App'>
       <h3 className='Title'>{titleText}</h3>
-      {tourLists.length > 0 ? tourLists : <button className='ref-btn' onClick={fetchTours}>Refresh</button>}
+      {tourLists.length !== 0 || loading ? tourLists : <button className='ref-btn' onClick={fetchTours}>Refresh</button>}
     </div>
   )
 }
