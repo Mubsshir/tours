@@ -1,0 +1,63 @@
+.TourCard {
+  width: 40%;
+  display: grid;
+  grid-template-columns: 75% 25%;
+  box-shadow: 0 0 1rem 0 rgba(0, 0, 0, 0.5);
+  margin: 20px 0;
+  border-radius: 10px;
+  overflow: hidden;
+  user-select: none;
+}
+.TourCard img {
+  width: 100%;
+  height: 250px;
+  object-fit: cover;
+  object-position: center;
+  grid-column: 1 / span 2;
+}
+.TourCard h3,
+.TourCard h4,
+.TourCard p {
+  padding: 10px 15px;
+}
+.TourCard h4 {
+  text-align: right;
+  color: rgb(11, 85, 247);
+  font-weight: 800;
+}
+.TourCard span {
+  color: rgb(11, 85, 247);
+  cursor: pointer;
+  margin: 0 5px;
+  font-weight: 500;
+}
+.TourCard p {
+  grid-column: 1 / span 2;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  letter-spacing: 1px;
+  font-size: 18px;
+  color: rgb(36, 36, 36);
+}
+.TourCard button {
+  grid-column: 1 / span 2;
+  cursor: pointer;
+  margin: 26px 15px 12px 15px;
+  padding: 10px 12px;
+  border: 1px solid rgb(11, 85, 247);
+  color: rgb(11, 85, 247);
+  outline: 0;
+  border-radius: 5px;
+  font-size: 16px;
+  font-weight: 700;
+  transition: background-color 0.3s ease-in-out;
+}
+.TourCard button:hover {
+  background-color: rgb(11, 85, 247);
+  color: white;
+}
+
+@media screen and (max-width: 720px) {
+  .TourCard {
+    width: 80%;
+  }
+}
